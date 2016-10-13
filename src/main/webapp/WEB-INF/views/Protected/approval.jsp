@@ -136,69 +136,96 @@ margin-right: 20px;
       <div class="scrollDiv">
       <div class="row well span12 spacer">
       	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	<p style="color:blue;"><b>Name</b></p>
+      	<p style="color:blue;"><b>Last name</b></p>
       	</div>
       <div class = "col-sm-3 col-md-3 col-lg-3">
-      	<p style="color:blue;"><b>Supervisor name</b></p>
+      	<p style="color:blue;"><b>First name</b></p>
       	</div>
       	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	<p style="color:blue;"><b>Supervisor no</b></p>
+      	<p style="color:blue;"><b>Phone</b></p>
       	</div>
       	<div class = "col-sm-3 col-md-3 col-lg-3">
       	<p style="color:blue;"><b>Approve/Reject</b></p>
       	</div>
       	
       </div>
-      <div class="row well span12">
+      
+      <% 
+
+java.sql.Connection con1;
+java.sql.Statement s1;
+java.sql.ResultSet rs1;
+java.sql.PreparedStatement pst1;
+
+con1=null;
+s1=null;
+pst1=null;
+rs1=null;
+String url1= 
+"jdbc:postgresql://localhost:5433/webtoxpi";
+String id1= "postgres";
+String pass1 = "postgres";
+try{
+	
+
+	Class.forName("org.postgresql.Driver").newInstance();
+con1 = java.sql.DriverManager.getConnection(url1, id1, pass1);
+
+} catch(ClassNotFoundException cnfex){
+cnfex.printStackTrace();
+
+}
+String sql1 = "SELECT lastname, firstname, phone, user_id FROM users where approved is null";
+try{
+s1 = con1.createStatement();
+rs1 = s1.executeQuery(sql1);
+%>
+<%
+while( rs1.next() ){
+%>
+  <div class="row well span12">
       	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	Mayukh Majumdar
+      	<%=rs1.getString("lastname") %>
       	</div>
       <div class = "col-sm-3 col-md-3 col-lg-3">
-      	Ivan Rusyn
+      	<%=rs1.getString("firstname") %>
       	</div>
       	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	000-000-1234
-      	</div>
-      	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	<button type="submit" class="btn btn-primary">Approve</button>
-      	<button type="submit" class="btn btn-danger">Reject</button>
+      	<%=rs1.getString("phone") %>
       	</div>
       	
+      	<div class = "col-sm-3 col-md-3 col-lg-3">
+      	<form method="post" action="/database_project/approveReject?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
+      	<button type="submit" class="btn btn-primary" name="userApprove" value="<%=rs1.getString("user_id")%>">Approve</button>
+      	</form>
+      	<form method="post" action="/database_project/userReject?${_csrf.parameterName}=${_csrf.token}" enctype="multipart/form-data">
+      	<button type="submit" class="btn btn-danger" name="userReject" value="<%=rs1.getString("user_id")%>">Reject</button>
+      	</form>
+      	</div>
       </div>
-      <div class="row well span12">
-      	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	Sumit Singh
-      	</div>
-      <div class = "col-sm-3 col-md-3 col-lg-3">
-      	Ivan Rusyn
-      	</div>
-      	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	000-000-1234
-      	</div>
-      	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	<button type="submit" class="btn btn-primary">Approve</button>
-      	<button type="submit" class="btn btn-danger">Reject</button>
-      	</div>
-      	</div>
-      	<div class="row well span12">
-      	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	Duan Liu
-      	</div>
-      <div class = "col-sm-3 col-md-3 col-lg-3">
-      	Ivan Rusyn
-      	</div>
-      	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	000-000-1234
-      	</div>
-      	<div class = "col-sm-3 col-md-3 col-lg-3">
-      	<button type="submit" class="btn btn-primary">Approve</button>
-      	<button type="submit" class="btn btn-danger">Reject</button>
+      <%
+}
+%>
+<%
+
+} 
+
+catch(Exception e){e.printStackTrace();}
+finally{
+if(rs1!=null) 
+	rs1.close();
+if(s1!=null) 
+	s1.close();
+if(con1!=null) 
+	con1.close();
+}
+
+%>
+      </div>
+      	
       	</div>
       	
-      </div>
-      </div>
-   </div>
-    
+      
      <div class="col-sm-8 col-md-8 col-lg-8" id="showListApproved">
     <H1 align="center">Approved users</H1>
       <div class="scrollDiv">
@@ -242,7 +269,7 @@ con = java.sql.DriverManager.getConnection(url, id, pass);
 cnfex.printStackTrace();
 
 }
-String sql = "SELECT lastname, firstname, phone FROM users";
+String sql = "SELECT lastname, firstname, phone FROM users where approved='Y' and login!='admin'";
 try{
 s = con.createStatement();
 rs = s.executeQuery(sql);
