@@ -202,6 +202,7 @@ while( rs1.next() ){
       	<button type="submit" class="btn btn-danger" name="userReject" value="<%=rs1.getString("user_id")%>">Reject</button>
       	</form>
       	</div>
+      	
       </div>
       <%
 }
