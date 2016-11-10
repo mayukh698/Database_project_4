@@ -12,7 +12,7 @@
 <jsp:include page="../fragments/header.jsp" />
 
 <body>
-<<<<<<< HEAD
+
 <sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
      url="jdbc:postgresql://localhost:5432/webtoxpi"
      user="postgres"  password="postgres"/>
@@ -33,9 +33,9 @@ User_id: ${user_id}
 
 
 
-=======
+
 <h5>Logged In User: ${user_id}</h5>
->>>>>>> branch 'master' of https://github.com/sumit0704/Database_project_4
+
 	<div class="container">
 
 		<h1>All Users</h1>
@@ -71,10 +71,9 @@ User_id: ${user_id}
 				
 			</c:forEach>
 		</table>
-<<<<<<< HEAD
-Users[0].lastname: ${users[0].lastname}
-=======
->>>>>>> branch 'master' of https://github.com/sumit0704/Database_project_4
+
+
+
 	</div>
 	
 	

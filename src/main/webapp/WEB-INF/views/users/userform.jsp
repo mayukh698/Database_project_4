@@ -1,3 +1,4 @@
+
 <%@ page session="false"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -6,16 +7,15 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="../fragments/header.jsp" />
-
+<link href="/database_project/scripts/external/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 <script src="/database_project/scripts/external/ckeditor/ckeditor.js"></script>
 
-
-<div class="container">
+<body style="background-image: url('/database_project/scripts/images/useradd.jpg')">
+<div class="container" >
 
 	<c:choose>
 		<c:when test="${userForm['new']}">
-			<h1>User Form</h1>
+			<h1>New User Registration </h1>
 		</c:when>
 		<c:otherwise>
 			<h1>Update User</h1>
@@ -231,4 +231,5 @@
 <jsp:include page="../fragments/footer.jsp" />
 
 </body>
+
 </html>

@@ -1,10 +1,7 @@
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<!doctype html>
 <html lang="en">
 <head>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-<link rel="stylesheet" type="text/css" href="/database_project/scripts/external/font-awesome/css/font-awesome.min.css" />
-
 	<meta charset="utf-8" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     
@@ -23,8 +20,6 @@
 </head>
 
 <body>
-<div align="right"><a href = "login" >Sign In</a> &nbsp; &nbsp; &nbsp;
-	<a href = "Open/applicant" >Sign Up</a>  &nbsp; &nbsp; &nbsp;</div>
 <nav class="navbar navbar-transparent navbar-fixed-top" role="navigation">  
   <div class="container">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -42,13 +37,13 @@
       <ul class="nav navbar-nav">
          <li class="dropdown">
               <a href="#" class="dropdown-toggle" data-toggle="dropdown"> 
-                <img src="/database_project/scripts/images/MB__home.png"/"/>
+                <img src="/database_project/scripts/images/MB__home.png"/>
                 Home 
                 <b class="caret"></b>
               </a>
               <ul class="dropdown-menu">
                 <li><a href=""><img src="/database_project/scripts/images/MB__home.png"/> Home</a></li>
-                <li><a href="About"><img src="/database_project/scripts/images/forum-icon-11.png"/>About</a></li>
+                <li><a href="about"><img src="/database_project/scripts/images/forum-icon-11.png"/>About</a></li>
                 <li><a href="login"><img src="/database_project/scripts/images/CustomerConnectionLoginLogo.png"/> Login</a></li>
                 <li><a href="users/add"><img src="/database_project/scripts/images/adduser.png"/> Request Access</a></li>
               </ul>
@@ -103,5 +98,4 @@ dliu@cvm.tamu.edu.
  </body>
    <script src="/database_project/scripts/js/jquery-1.10.2.js" type="text/javascript"></script>
    <script src="/database_project/scripts/js/bootstrap.min.js" type="text/javascript"></script>
-
 </html>

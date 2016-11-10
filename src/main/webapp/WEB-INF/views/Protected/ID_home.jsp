@@ -10,13 +10,34 @@
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../fragments/header.jsp" />
-<link rel="stylesheet" type="text/css" href="/database_project/scripts/external/font-awesome/css/font-awesome.min.css" />
+<!-- <link rel="stylesheet" type="text/css" href="/database_project/scripts/external/font-awesome/css/font-awesome.min.css" /> -->
 
 
 <body>
+<!--  
 <sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
      url="jdbc:postgresql://localhost:5432/webtoxpi"
      user="postgres"  password="postgres"/>
+ 
+<sql:query dataSource="${snapshot}" var="result">
+SELECT login FROM users WHERE login = '${user_id}';
+</sql:query>
+
+<c:set var="administrator" value="${result.rows[0].login}"/>
+<spring:url value="/users" var="urlListUser" />
+
+value= "${result.rows[0].login}"
+
+<c:choose>
+  <c:when test="${administrator == 'admin'}">
+
+   <p><a href="${urlListUser}">List Users and Applicants</a><p>
+ </c:when>  
+</c:choose> <!-- end of if YES administrator --> 
+<!-- 
+<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
+     url="jdbc:postgresql://localhost:5432/webtoxpi"
+     user="postgres"  password="root"/>
  
 <sql:query dataSource="${snapshot}" var="result">
 SELECT admin FROM users WHERE login = '${user_id}';
@@ -34,6 +55,7 @@ value= "${result.rows[0].admin}"
  </c:when>  
 </c:choose> <!-- end of if YES administrator -->
 
+
 <spring:url value="/profile" var="urlProfile" />
 <spring:url value="/import" var="urlImport" />
 <spring:url value="/export" var="urlExport" />
@@ -43,13 +65,18 @@ value= "${result.rows[0].admin}"
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Welcome</h1>
+                <div class = "col-sm-6 col-md-6 col-lg-6">
+      	<button type="submit" class="btn btn-primary">Create a project</button>
+      	</div>
+      	<div class = "col-sm-6 col-md-6 col-lg-6">
+      	<button type="submit" class="btn btn-danger">View a project</button>
+      	</div>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-12">
-                <img class="img-responsive" src="http://placehold.it/1200x300" alt="">
+                <img class="img-responsive" src="/database_project/scripts/images/test.png" alt="">
             </div>
         </div>
 
