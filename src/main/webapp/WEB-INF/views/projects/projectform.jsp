@@ -245,7 +245,6 @@
 							minimumInputLength : 2
 						});
 			};
-
 			/* select2function($("#projectmanagerses"), "managers"); */
 			select2function($("#projectreviewerses"), "reviewers");
 			select2function($("#projectmemberses"), "members");

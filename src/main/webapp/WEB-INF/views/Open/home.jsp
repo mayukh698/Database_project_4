@@ -1,4 +1,3 @@
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <html lang="en">
 <head>
@@ -7,6 +6,7 @@
     
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
+    
     
     <title>CACS </title>
     
@@ -98,4 +98,5 @@ dliu@cvm.tamu.edu.
  </body>
    <script src="/database_project/scripts/js/jquery-1.10.2.js" type="text/javascript"></script>
    <script src="/database_project/scripts/js/bootstrap.min.js" type="text/javascript"></script>
+
 </html>

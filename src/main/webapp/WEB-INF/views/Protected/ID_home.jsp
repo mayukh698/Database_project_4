@@ -9,35 +9,18 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<jsp:include page="../fragments/header.jsp" />
-<!-- <link rel="stylesheet" type="text/css" href="/database_project/scripts/external/font-awesome/css/font-awesome.min.css" /> -->
+
+<link rel="stylesheet" type="text/css" href="/database_project/scripts/external/font-awesome/css/font-awesome.min.css" />
 
 
 <body>
-<!--  
-<sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
-     url="jdbc:postgresql://localhost:5432/webtoxpi"
-     user="postgres"  password="postgres"/>
- 
-<sql:query dataSource="${snapshot}" var="result">
-SELECT login FROM users WHERE login = '${user_id}';
-</sql:query>
-
-<c:set var="administrator" value="${result.rows[0].login}"/>
-<spring:url value="/users" var="urlListUser" />
-
-value= "${result.rows[0].login}"
-
-<c:choose>
-  <c:when test="${administrator == 'admin'}">
-
-   <p><a href="${urlListUser}">List Users and Applicants</a><p>
- </c:when>  
-</c:choose> <!-- end of if YES administrator --> 
+<div class="main" 
+	style="background-image: url('/database_project/scripts/images/city-wallpaper-opaque.jpg');">
+<jsp:include page="../fragments/header.jsp" />
 <!-- 
 <sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
      url="jdbc:postgresql://localhost:5432/webtoxpi"
-     user="postgres"  password="root"/>
+     user="postgres"  password="postgres"/>
  
 <sql:query dataSource="${snapshot}" var="result">
 SELECT admin FROM users WHERE login = '${user_id}';
@@ -50,10 +33,13 @@ value= "${result.rows[0].admin}"
 
 <c:choose>
   <c:when test="${administrator == 'YES'}">
-
+  
    <p><a href="${urlListUser}">List Users and Applicants</a><p>
  </c:when>  
 </c:choose> <!-- end of if YES administrator -->
+ 
+<br>
+<a href="../Protected/Sample-Data-Access" target=_blank><h2 align="center">Sample-Data-Access</h2></a><br>
 
 
 <spring:url value="/profile" var="urlProfile" />
@@ -65,18 +51,13 @@ value= "${result.rows[0].admin}"
 
         <div class="row">
             <div class="col-lg-12">
-                <div class = "col-sm-6 col-md-6 col-lg-6">
-      	<button type="submit" class="btn btn-primary">Create a project</button>
-      	</div>
-      	<div class = "col-sm-6 col-md-6 col-lg-6">
-      	<button type="submit" class="btn btn-danger">View a project</button>
-      	</div>
+                <h1 class="page-header">Welcome</h1>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-12">
-                <img class="img-responsive" src="/database_project/scripts/images/test.png" alt="">
+                <img class="img-responsive" src="http://placehold.it/1200x300" alt="">
             </div>
         </div>
 
@@ -98,7 +79,7 @@ value= "${result.rows[0].admin}"
                         <a href="${urlProfile}" class="btn btn-primary">GoTo</a>
                     </div>
                 </div>
-            </div>          
+            </div>
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -151,6 +132,6 @@ value= "${result.rows[0].admin}"
 <br>
 
 <jsp:include page="../fragments/footer.jsp" />
-
+</div><!-- end of the background div -->
 </body>
 </html>
