@@ -80,6 +80,7 @@ value= "${result.rows[0].admin}"
                               <i class="fa fa-download fa-stack-1x fa-inverse"></i>
                         </span>
                     </div>
+                    
                     <div class="panel-body">
                         <h4>Import</h4>
                         <p>Import data from csv file.</p>
