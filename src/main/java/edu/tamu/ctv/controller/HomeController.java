@@ -1,7 +1,5 @@
 package edu.tamu.ctv.controller;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +25,8 @@ public class HomeController
 	
 	
 	@RequestMapping(value = {"/", "/Open/**"}, method = RequestMethod.GET)
-	public String index(Model model,HttpServletRequest request)
+	public String index(Model model)
+	
 	{
 		System.out.println("\n\nLogin @ home: " + projectAuthentication.getCurrentUser().getLogin() + "\n\n");
 		//String id = projectAuthentication.getCurrentUser().getLogin();
@@ -39,22 +38,38 @@ public class HomeController
 		// return "home";
 	}
 	
-	@RequestMapping(value = "/contact", method = RequestMethod.GET)
-	public String showContact(Model model,HttpServletRequest request)
+	@RequestMapping(value ="/aboutPage", method = RequestMethod.GET)
+	public String showAbout(Model model)
+	
 	{
-		//Object projectIdObj = request.getSession().getAttribute("projectId");
+		logger.debug("index()");
+		return "/Open/about";
+		// return "home";
+	}
+	
+	@RequestMapping(value ="/loginPage", method = RequestMethod.GET)
+	public String showLogin(Model model)
+	
+	{
+		logger.debug("index()");
+		return "/Open/login";
+		// return "home";
+	}
+	
+	@RequestMapping(value = "/contact", method = RequestMethod.GET)
+	public String showContact(Model model)
+	{
 		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		logger.debug("index()");
 		return "/contact";
 	}
 	
 	@RequestMapping(value = "/contact", method = RequestMethod.POST)
-	public String sendMessage(@ModelAttribute("contactForm") @Validated ContactForm contactForm, BindingResult result, Model model, final RedirectAttributes redirectAttributes,
-			HttpServletRequest request)
+	public String sendMessage(@ModelAttribute("contactForm") @Validated ContactForm contactForm, BindingResult result, Model model, final RedirectAttributes redirectAttributes)
 	{
-		logger.debug("sendMessage() : {}", contactForm);
-		//Object projectIdObj = request.getSession().getAttribute("projectId");
 		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		logger.debug("sendMessage() : {}", contactForm);
+
 		if (result.hasErrors())
 		{
 			return "contact";

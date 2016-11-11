@@ -12,10 +12,11 @@
 
 
 <body>
-CSRF Cookie Name: ${_csrf.parameterName} <br>
-value = ${_csrf.token} <br><br>
+<h2>Upload a file:</h2>
+<br><br><br><br><br><br><br><br>
 
 	<div class="container">
+	
 		<div class="row">
 			<div class="col-md-12">
 				<div class="well well-sm">
@@ -26,21 +27,15 @@ value = ${_csrf.token} <br><br>
 							
 							<div class="form-group">
 								<label class="col-sm-2 control-label">File to upload:</label>
-								<div class="col-sm-10">
-									.<input type="file" name="file" class="form-control"  placeholder="File to upload" />
-									..
+								<div class="col-sm-5">
+									<input type="file" accept=".csv,text/csv,.pdf,.docx,.jpeg,.png" name="file" class="form-control"  placeholder="File to upload" />
 								</div>
                         	</div>
-                        	<div class="form-group">
-								<label class="col-sm-2 control-label">File Name:</label>
-								<div class="col-sm-10">
-									<input type="text" name="name" class="form-control"  placeholder="File Name" value="FileName.csv">
-								</div>
-                        	</div>
+
                         	<br/>
 							<div class="form-group">
 								<div class="col-sm-offset-2 col-sm-10">
-									<input type="submit" value="Upload"	class="btn-lg btn-primary pull-right">
+									<input type="submit" value="upload"	class="btn-lg btn-primary pull-right">
 								</div>
 							</div>
 						</fieldset>
