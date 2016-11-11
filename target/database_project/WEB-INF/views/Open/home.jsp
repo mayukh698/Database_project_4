@@ -3,8 +3,8 @@
 <head>
 
 <style>
-.error {
-	padding: 15px;
+.error {  
+	padding: 14px;
 	margin-bottom: 20px;
 	border: 1px solid transparent;
 	border-radius: 4px;
@@ -137,10 +137,11 @@ font-weight:bold;
 <div id="login-lines">
 
 
-</div>
-	<button id="password-submission" style="
-  		width:180px;
-  		height:60px;
+</div><br>
+	<button id="password-submission1" style="
+		/*margin:auto;*/
+  		width:250px;
+  		height:80px;
   		display:inline-block;
   		font-family:Arial;
   		font-size:16px;
@@ -150,10 +151,11 @@ font-weight:bold;
   		text-transform:uppercase;
   		text-align:center; /*center;*/
   		text-shadow:1px 1px 0px #07526e;
-  		padding-top:6px;
+  		padding-top:15px;
+  		
   		margin-left:auto;
   		margin-right:auto;
-  		left:47%;
+  		left:40%;
   		position:relative;
   		/*cursor:pointer;*/
   		border: none;
@@ -162,7 +164,7 @@ font-weight:bold;
   		border-radius: 5px;
   		box-shadow: inset 0px 1px 0px #2ab7ec, 0px 5px 0px 0px #07526e, 0px 10px 5px #999;">
   
-  We Are Great.</button>
+  This Website is <p> Under Construction</button>
 	<br><br>&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	
 	<a href = "Open/Publ2016"
 		target = _blank>

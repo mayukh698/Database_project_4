@@ -27,7 +27,7 @@
 
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="page-header">Services<br>
+                <h2 class="page-header">Services</h2><br>
                 <spring:url value="/" var="urlHome" />
 
 <spring:url value="/users" var="urlListUser" />

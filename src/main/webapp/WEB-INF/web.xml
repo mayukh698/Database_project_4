@@ -19,4 +19,5 @@
     <servlet-name>ServletDogNames</servlet-name>
     <url-pattern>/ServletDogNames</url-pattern>
   </servlet-mapping>
+  
 </web-app>

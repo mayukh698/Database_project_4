@@ -150,7 +150,7 @@ public class UserController
 	}
 
 	// show add user form
-	@RequestMapping(value = "Open/applicant", method = RequestMethod.GET)
+	@RequestMapping(value = "/users/add", method = RequestMethod.GET)
 	public String showAddUserForm(Model model)
 	{
 		logger.debug("showAddUserForm()");
@@ -159,7 +159,7 @@ public class UserController
 		model.addAttribute("userForm", user);
 		populateDefaultModel(model);
 		
-		return "Open/userform";
+		return "users/userform";
 	}
 
 	// show update form

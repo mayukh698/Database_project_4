@@ -4,7 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<%@ page import="edu.tamu.ctv.controller.UserRequestController"%>
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="../fragments/header.jsp" />

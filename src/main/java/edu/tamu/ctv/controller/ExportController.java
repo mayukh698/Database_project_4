@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import edu.tamu.ctv.entity.Projects;
 import edu.tamu.ctv.repository.ProjectsRepository;
 import edu.tamu.ctv.service.ExportService;
+import edu.tamu.ctv.utils.session.ProjectAuthentication;
 
 @Controller
 public class ExportController
@@ -29,13 +30,15 @@ public class ExportController
 	private ExportService exportService;
 	@Autowired
 	private ProjectsRepository projectRepository;
-	
+	@Autowired
+	private ProjectAuthentication projectAuthentication;
 	@RequestMapping(value = "/export", method = RequestMethod.GET)
 	public String export(Model model, HttpServletRequest request)
 	{
 		logger.debug("export()");
-		
 		Object projectIdObj = request.getSession().getAttribute("projectId");
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		//Object projectIdObj = request.getSession().getAttribute("projectId");
 		if (projectIdObj != null)
 		{
 			return "redirect:/export/byproject/" + projectIdObj;

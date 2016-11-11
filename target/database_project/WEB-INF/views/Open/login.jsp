@@ -108,7 +108,10 @@ font-weight:bold;
 <link rel="stylesheet" type="text/css" href="/database_project/scripts/external/font-awesome/css/font-awesome.min.css" />
 
 </head>
-<body onload='document.loginForm.username.focus();'>
+<body onload='document.loginForm.username.focus();' background="/database_project/img/pattern.png">
+<br>	
+	<div align="right"><a href = "/database_project">
+		Back to Home Page</a>&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;	&nbsp;</div>
 
 <div id = Container-login-page align="center">
 	<br><br><br><br>
@@ -146,8 +149,9 @@ font-weight:bold;
 		   </table>
 
 		   <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		   <!--  
 		   <br><br><br>Name = "${_csrf.parameterName}"<br> Value = "${_csrf.token}" 
-		   <br>LoginUrl = '${loginUrl}' <br>
+		   <br>LoginUrl = '${loginUrl}' --><br>
 		</form>
 	</div>
 	</div> <!-- end of container-login-page -->

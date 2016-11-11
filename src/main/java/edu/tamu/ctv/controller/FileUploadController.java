@@ -4,6 +4,8 @@ import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -18,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import edu.tamu.ctv.utils.importdata.ImportManager;
+import edu.tamu.ctv.utils.session.ProjectAuthentication;
 
 @Controller
 public class FileUploadController
@@ -27,17 +30,23 @@ public class FileUploadController
 	@Autowired
 	private ImportManager importManager;
 	
+	@Autowired		// This a few lines were added by LD.
+	private ProjectAuthentication projectAuthentication;
 	@RequestMapping(value = "/upload", method = RequestMethod.GET)
-	public String upload(@RequestParam("projectId") String projectId, Model model)
+	public String upload(@RequestParam("projectId") String projectId, Model model, HttpServletRequest request)
 	{
 		logger.debug("upload()");
+		Object projectIdObj = request.getSession().getAttribute("projectId");
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		model.addAttribute("importProjectId", projectId);
 		return "fileupload/upload";
 	}
 	
 	@RequestMapping(value = "/uploadFile", method = RequestMethod.POST)
-	public String uploadFileHandler(@RequestParam("name") String name, @RequestParam("file") MultipartFile file, @RequestParam("projectId") String projectId, final RedirectAttributes redirectAttributes)
+	public String uploadFileHandler(@RequestParam("name") String name, @RequestParam("file") MultipartFile file, @RequestParam("projectId") String projectId, final RedirectAttributes redirectAttributes, Model model, HttpServletRequest request)
 	{
+		Object projectIdObj = request.getSession().getAttribute("projectId");
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		String returnString = "";
 		if (!file.isEmpty() && StringUtils.isNotBlank(projectId))
 		{
@@ -81,9 +90,10 @@ public class FileUploadController
 	}
 
 	@RequestMapping(value = "/uploadMultipleFile", method = RequestMethod.POST)
-	public @ResponseBody String uploadMultipleFileHandler(@RequestParam("name") String[] names, @RequestParam("file") MultipartFile[] files)
+	public @ResponseBody String uploadMultipleFileHandler(@RequestParam("name") String[] names, @RequestParam("file") MultipartFile[] files, Model model, HttpServletRequest request)
 	{
-
+		Object projectIdObj = request.getSession().getAttribute("projectId");
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		if (files.length != names.length) return "Mandatory information missing";
 
 		String message = "";

@@ -25,6 +25,7 @@ edu\tamu\ctv\service\AnalysisService$2.class
 edu\tamu\ctv\utils\importdata\toxpi\ToxPiConfig.class
 edu\tamu\ctv\config\data\DataConfig.class
 edu\tamu\ctv\utils\importdata\toxpi\Utility$1.class
+edu\tamu\ctv\service\ChemicalsService.class
 edu\tamu\ctv\service\AnalysisService.class
 edu\tamu\ctv\config\WebAppInitializer.class
 edu\tamu\ctv\controller\CrudeOilController.class
@@ -50,12 +51,14 @@ edu\tamu\ctv\service\ResultService.class
 edu\tamu\ctv\utils\importdata\ImportResult.class
 edu\tamu\ctv\controller\AnalysisController.class
 edu\tamu\ctv\entity\enums\Status.class
+edu\tamu\ctv\service\defaultdata\InitChemicalsCreateService.class
 edu\tamu\ctv\entity\Units.class
 edu\tamu\ctv\service\defaultdata\InitProjectCreateService.class
 edu\tamu\ctv\service\defaultdata\InitColumnTypeTemplCreateService.class
 edu\tamu\ctv\service\validator\UserFormValidator.class
 edu\tamu\ctv\entity\Notes.class
 edu\tamu\ctv\utils\importdata\toxpi\Slice.class
+edu\tamu\ctv\controller\ChemicalsController.class
 edu\tamu\ctv\service\ProjectMemberService.class
 ServletDogNames.class
 edu\tamu\ctv\service\ExportService$1.class
@@ -73,7 +76,6 @@ edu\tamu\ctv\controller\ProjectController.class
 edu\tamu\ctv\controller\ProfileController.class
 edu\tamu\ctv\repository\ColumnTypesRepository.class
 edu\tamu\ctv\service\ColumnTypesService.class
-edu\tamu\ctv\controller\Publ2016Controller.class
 edu\tamu\ctv\service\defaultdata\InitUnitCreateService.class
 edu\tamu\ctv\service\ProjectService.class
 edu\tamu\ctv\entity\Rowtypestempl.class
@@ -107,6 +109,7 @@ edu\tamu\ctv\utils\Util.class
 edu\tamu\ctv\service\defaultdata\InitProjectTypeCreateService.class
 edu\tamu\ctv\utils\importdata\toxpi\Component.class
 edu\tamu\ctv\controller\ID_HomeController.class
+edu\tamu\ctv\repository\ChemicalsRepository.class
 edu\tamu\ctv\entity\Columntypes.class
 edu\tamu\ctv\entity\Columnheaders.class
 edu\tamu\ctv\config\security\SecurityConfig.class

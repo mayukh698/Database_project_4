@@ -36,6 +36,7 @@ import edu.tamu.ctv.repository.ProjectsRepository;
 import edu.tamu.ctv.repository.UsersRepository;
 import edu.tamu.ctv.service.ProjectService;
 import edu.tamu.ctv.service.validator.ProjectFormValidator;
+import edu.tamu.ctv.utils.session.ProjectAuthentication;
 
 @Controller
 public class ProjectController
@@ -57,12 +58,32 @@ public class ProjectController
 	@Autowired
 	private UsersRepository userRepository;
 	
+	@Autowired
+	private ProjectAuthentication projectAuthentication;
 	@RequestMapping(value = "/projects", method = RequestMethod.GET)
+	public String requestProjects(Model model)
+	{
+		logger.debug("showAllProjects()");
+		model.addAttribute("projects", projectRepository.findAll());
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		return "projects/viewProject";
+	}
+	@RequestMapping(value = "/projects/request", method = RequestMethod.GET)
 	public String showAllProjects(Model model)
 	{
 		logger.debug("showAllProjects()");
 		model.addAttribute("projects", projectRepository.findAll());
-		return "projects/list";
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		return "projects/projectRequest";
+	}
+	
+	@RequestMapping(value = "/projects/requested", method = RequestMethod.GET)
+	public String showRequestedProjects(Model model)
+	{
+		logger.debug("showRequestedProjects()");
+		model.addAttribute("projects", projectRepository.findAll());
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		return "projects/requestedProject";
 	}
 
 	@RequestMapping(value = "/projects", method = RequestMethod.POST)
@@ -144,6 +165,7 @@ public class ProjectController
 		logger.debug("showAddProjectForm()");
 		Projects project = new Projects();
 		// set default value
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		model.addAttribute("projectForm", project);
 		populateDefaultModel(model, project);
 		return "projects/projectform";

@@ -1,5 +1,7 @@
 package edu.tamu.ctv.controller;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +27,11 @@ public class HomeController
 	
 	
 	@RequestMapping(value = {"/", "/Open/**"}, method = RequestMethod.GET)
-	public String index(Model model)
+	public String index(Model model,HttpServletRequest request)
 	{
 		System.out.println("\n\nLogin @ home: " + projectAuthentication.getCurrentUser().getLogin() + "\n\n");
-		String id = projectAuthentication.getCurrentUser().getLogin();
-
+		//String id = projectAuthentication.getCurrentUser().getLogin();
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		
 		
 		logger.debug("index()");
@@ -38,17 +40,21 @@ public class HomeController
 	}
 	
 	@RequestMapping(value = "/contact", method = RequestMethod.GET)
-	public String showContact(Model model)
+	public String showContact(Model model,HttpServletRequest request)
 	{
+		//Object projectIdObj = request.getSession().getAttribute("projectId");
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		logger.debug("index()");
 		return "/contact";
 	}
 	
 	@RequestMapping(value = "/contact", method = RequestMethod.POST)
-	public String sendMessage(@ModelAttribute("contactForm") @Validated ContactForm contactForm, BindingResult result, Model model, final RedirectAttributes redirectAttributes)
+	public String sendMessage(@ModelAttribute("contactForm") @Validated ContactForm contactForm, BindingResult result, Model model, final RedirectAttributes redirectAttributes,
+			HttpServletRequest request)
 	{
 		logger.debug("sendMessage() : {}", contactForm);
-
+		//Object projectIdObj = request.getSession().getAttribute("projectId");
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
 		if (result.hasErrors())
 		{
 			return "contact";

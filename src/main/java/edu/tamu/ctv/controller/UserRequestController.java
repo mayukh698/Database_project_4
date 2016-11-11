@@ -16,10 +16,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 //import org.springframework.web.bind.annotation.RequestParam;
 
+import edu.tamu.ctv.servlets.ApproveReject;
+import edu.tamu.ctv.servlets.UserReject;
 //import edu.tamu.ctv.entity.UserDetail;
 import edu.tamu.ctv.utils.session.ProjectAuthentication;
 //Class added by Mayukh for user requests contrl by admin
@@ -42,63 +45,38 @@ public class UserRequestController
 
 		//model.addAttribute("users", userRepository.findAll());		// This line is very important.
 		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
-		/*
-        try {
-            Class.forName("org.postgresql.Driver");
-
-
-
-        }
-        catch (java.lang.ClassNotFoundException e) {
-            java.lang.System.err.print("ClassNotFoundException: Postgres Server JDBC");
-            java.lang.System.err.println(e.getMessage());
-            throw new Exception("No JDBC Driver found in Server");
-        }
-
-        //Trying to connectpostgresql:/
-        try {
-            conn = DriverManager.getConnection("jdbc:postgresql://localhost:5433/webtoxpi","postgres","postgres");
-            System.out.println("Connection with: "+"postgres"+"!!");
-            String sql = "SELECT lastname, firstname, phone FROM users";
-            
-            PreparedStatement ps = conn.prepareStatement(sql);
-            ResultSet rs = ps.executeQuery();
-            UserDetail userdetail = null;
-            while(rs.next()){
-            	userdetail = new UserDetail();
-            	userdetail.setLastname(rs.getString("lastname")); //set your firstName
-            	userdetail.setFirstname(rs.getString("firstname")); //set your MiddleName
-            	userdetail.setPhone(rs.getString("phone")); //set your LastName
-            	System.out.println("Phone: "+rs.getString("phone"));
-            	userReq.add(userdetail); 
-            	request.setAttribute("userReq", userReq);
-                //RequestDispatcher view = request.getRequestDispatcher("DemoJSP.jsp");
-                //view.forward(request, response);
-            }
-        }
-        catch (SQLException E) {
-
-            java.lang.System.out.println("SQLException: " + E.getMessage());
-            java.lang.System.out.println("SQLState: " + E.getSQLState());
-            java.lang.System.out.println("VendorError: " + E.getErrorCode());
-
-        }
-        try {
-            conn.close();
-            System.out.println("Connection close ");
-        } catch (SQLException E) {
-
-
-            java.lang.System.out.println("SQLException: " + E.getMessage());
-            java.lang.System.out.println("SQLState: " + E.getSQLState());
-            java.lang.System.out.println("VendorError: " + E.getErrorCode());
-            throw E;
-        }*/
-        
+		        
 		//model.addAttribute("ProjectId", projectId);
 		//response.sendRedirect("/Protected/approval");	
-		return "/Protected/approval";
+		return "/Open/approval";
 		
 		
 	}
+	@RequestMapping(value = "/approval/accept/{id}", method = RequestMethod.GET)
+	public String userAccept(@PathVariable("id") int id,Model model, HttpServletRequest request) throws Exception
+	{
+		logger.debug("userAccept()");
+			
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		ApproveReject approveReject = new ApproveReject();
+		approveReject.updateAccept(id);
+		
+		return "/Open/approval";
+		
+		
+	}
+	@RequestMapping(value = "/approval/reject/{id}", method = RequestMethod.GET)
+	public String userReject(@PathVariable("id") int id,Model model, HttpServletRequest request) throws Exception
+	{
+		logger.debug("userReject()");
+			
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		UserReject userReject = new UserReject();
+		userReject.updateAccept(id);
+		
+		return "/Open/approval";
+		
+		
+	}
+	
 }

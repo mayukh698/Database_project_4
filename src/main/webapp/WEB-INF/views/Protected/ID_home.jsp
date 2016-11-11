@@ -14,25 +14,26 @@
 
 
 <body>
+<!--  
 <sql:setDataSource var="snapshot" driver="org.postgresql.Driver"
-     url="jdbc:postgresql://localhost:5432/webtoxpi"
+     url="jdbc:postgresql://localhost:5433/webtoxpi"
      user="postgres"  password="postgres"/>
  
 <sql:query dataSource="${snapshot}" var="result">
-SELECT admin FROM users WHERE login = '${user_id}';
+SELECT login FROM users WHERE login = '${user_id}';
 </sql:query>
 
-<c:set var="administrator" value="${result.rows[0].admin}"/>
+<c:set var="administrator" value="${result.rows[0].login}"/>
 <spring:url value="/users" var="urlListUser" />
 
-value= "${result.rows[0].admin}"
+value= "${result.rows[0].login}"
 
 <c:choose>
-  <c:when test="${administrator == 'YES'}">
+  <c:when test="${administrator == 'admin'}">
 
    <p><a href="${urlListUser}">List Users and Applicants</a><p>
  </c:when>  
-</c:choose> <!-- end of if YES administrator -->
+</c:choose> <!-- end of if YES administrator --> 
 
 <spring:url value="/profile" var="urlProfile" />
 <spring:url value="/import" var="urlImport" />
@@ -43,7 +44,12 @@ value= "${result.rows[0].admin}"
 
         <div class="row">
             <div class="col-lg-12">
-                <h1 class="page-header">Welcome</h1>
+                <div class = "col-sm-6 col-md-6 col-lg-6">
+      	<button type="submit" class="btn btn-primary">Create a project</button>
+      	</div>
+      	<div class = "col-sm-6 col-md-6 col-lg-6">
+      	<button type="submit" class="btn btn-danger">View a project</button>
+      	</div>
             </div>
         </div>
 
