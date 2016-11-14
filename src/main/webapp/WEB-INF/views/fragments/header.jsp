@@ -37,7 +37,7 @@
 <spring:url value="/profile" var="urlProfile" />
 <spring:url value="/contact" var="urlContact" />
 <spring:url value="/approval" var="urlUserList" />
-<spring:url value="../Protected/ID_home" var="urlUsers" />
+<spring:url value="/Protected/ID_home" var="urlUsers" />
 <spring:url value="/compoundSearch" var="compoundSearch" />
 
 

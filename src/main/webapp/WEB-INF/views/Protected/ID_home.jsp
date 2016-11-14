@@ -1,4 +1,4 @@
-<%@ page import="edu.tamu.ctv.controller.ID_HomeController"%>
+s<%@ page import="edu.tamu.ctv.controller.ID_HomeController"%>
 <%@ page session="false"%>
 <%@ page import="java.io.*,java.util.*,java.sql.*"%>
 <%@ page import="javax.servlet.http.*,javax.servlet.*" %>
@@ -71,11 +71,61 @@ value= "${result.rows[0].admin}"
                     </div>
                     <div class="panel-body">
                         <h4>My Page</h4>
-                        <p>Information about your projects.</p>
+                        <p>Information about the user.</p>
                         <a href="${urlProfile}" class="btn btn-primary">GoTo</a>
                     </div>
                 </div>
             </div>
+            
+            
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <span class="fa-stack fa-5x">
+                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fa fa-download fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <h4>Manage</h4>
+                        <p>Manage your projects.</p>
+                        
+                    </div>
+                </div>
+            </div> 
+            
+            <div class="col-md-3 col-sm-6">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <span class="fa-stack fa-5x">
+                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fa fa-upload fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <h4>Files</h4>
+                        <p>Import and export files</p>
+                        
+                    </div>
+                </div>
+            </div>
+           
+            <div class="col-md-3 col-sm-6">
+                <div class="panel panel-default text-center">
+                    <div class="panel-heading">
+                        <span class="fa-stack fa-5x">
+                              <i class="fa fa-circle fa-stack-2x text-primary"></i>
+                              <i class="fa fa-bar-chart fa-stack-1x fa-inverse"></i>
+                        </span>
+                    </div>
+                    <div class="panel-body">
+                        <h4>Access request</h4>
+                        <p>Submit requests for projects.</p>
+                        
+                    </div>
+                </div>
+            <!--  
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -90,7 +140,8 @@ value= "${result.rows[0].admin}"
                         <a href="${urlImport}" class="btn btn-primary">Goto</a>
                     </div>
                 </div>
-            </div>
+            </div> 
+            
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -106,6 +157,7 @@ value= "${result.rows[0].admin}"
                     </div>
                 </div>
             </div>
+           
             <div class="col-md-3 col-sm-6">
                 <div class="panel panel-default text-center">
                     <div class="panel-heading">
@@ -120,7 +172,7 @@ value= "${result.rows[0].admin}"
                         <a href="${urlDisplayAnalysis}" class="btn btn-primary">GoTo</a>
                     </div>
                 </div>
-            </div>
+            </div>  -->
         </div>
     </div>
     

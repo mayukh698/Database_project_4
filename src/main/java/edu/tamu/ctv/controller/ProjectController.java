@@ -1,11 +1,13 @@
 package edu.tamu.ctv.controller;
 
 import java.beans.PropertyEditorSupport;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -46,6 +48,8 @@ import edu.tamu.ctv.repository.UsersRepository;
 import edu.tamu.ctv.service.ProjectService;
 import edu.tamu.ctv.service.ProjectUserMappingService;
 import edu.tamu.ctv.service.validator.ProjectFormValidator;
+//import edu.tamu.ctv.servlets.ApproveReject;
+import edu.tamu.ctv.servlets.RoleSubmit;
 import edu.tamu.ctv.utils.session.ProjectAuthentication;
 
 @Controller
@@ -183,7 +187,21 @@ public class ProjectController
 		return "redirect:/projects";
 
 	}
+	//Added for access request
+	@RequestMapping(value = "/projectRequest/roleSubmit/{id}", method = RequestMethod.POST)
+	public String projectRole(@PathVariable("id") Long id, final RedirectAttributes redirectAttributes, Model model, HttpServletRequest request) throws IOException, ServletException
+	{
+		logger.debug("projectRole() : {}", id);
 
+		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
+		int userId = Integer.parseInt(projectAuthentication.getCurrentUser().getLogin());
+		RoleSubmit roleSubmit = new RoleSubmit();
+		roleSubmit.rSubmit(id,userId);
+		return "redirect:/projects";
+
+	}
+	
+	
 	@RequestMapping(value = "/projects/{id}", method = RequestMethod.GET)
 	public String showProject(@PathVariable("id") Long id, Model model)
 	{

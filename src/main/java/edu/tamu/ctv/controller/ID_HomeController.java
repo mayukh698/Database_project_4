@@ -31,7 +31,7 @@ public class ID_HomeController
 	public String index(Model model)
 	{
 		System.out.println("\n\nLogin @ home: " + projectAuthentication.getCurrentUser().getLogin() + "\n\n");
-		String id = projectAuthentication.getCurrentUser().getLogin();
+		//String id = projectAuthentication.getCurrentUser().getLogin();
 
 		model.addAttribute("users", userRepository.findAll());		// This line is very important.
 		model.addAttribute("user_id", projectAuthentication.getCurrentUser().getLogin());
